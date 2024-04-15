@@ -9,8 +9,8 @@
     
 <?php
 $tpersonne = array(
-    "prenom" => array("prenom1" => "ali", "prenom2" => "salma", "prenom3" => "mohamed", "prenom4" => "iness"),
-    "nom" => array("nom1" => "benAli", "nom2" => "benSalma", "nom3" => "benMohamed", "nom4" => "benIness"),
+    "albe" => array("prenom1" => "ali", "prenom2" => "salma", "prenom3" => "mohamed", "prenom4" => "iness"),
+    "" => array("nom1" => "benAli", "nom2" => "benSalma", "nom3" => "benMohamed", "nom4" => "benIness"),
     "age" => array("age1" => 20, "age2" => 23, "age3" => 19, "age4" => 22),
     "ville" => array("ville1" => "sfax", "ville2" => "sousse", "ville3" => "gabes", "ville4" => "sfax")
 );
@@ -28,7 +28,7 @@ $tpersonne = array(
     </tr>
     <?php
     // Boucle pour parcourir toutes les entrées
-    for ($i = 1; $i <= sizeof($tpersonne['prenom']); $i++) {
+    foreach($tpersonne as $index=> $val){
         echo "<tr>";
         echo "<td>" . substr($tpersonne['prenom']['prenom'.$i],0,2).substr($tpersonne['nom']['nom'.$i] ,0,2). "</td>";
         // Affichage des prénoms
