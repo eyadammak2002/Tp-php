@@ -1,5 +1,7 @@
 <?php
 require_once ('Matiere.php');
+include ('MatiereManager.php');
+
 if(empty($_GET['code'])||empty($_GET['intitule'])||empty($_GET['regime'])||empty($_GET['coefficient']))
 echo"tous les champs est obligatoire";
 else{
@@ -13,10 +15,16 @@ else{
 }
 
 $mat=new Matiere(($_GET['code']),($_GET['intitule']),$reg,(float)$_GET['coefficient']);
-echo $mat ->__get('code')."<br>";
-echo $mat ->__get('intitule')."<br>";
-echo $mat ->__get('regime')."<br>";
-echo $mat ->__get('coefficient')."<br>";
-echo $mat ->__get('credits')."<br>";
+//echo $mat ->__get('code')."<br>";
+//echo $mat ->__get('intitule')."<br>";
+//echo $mat ->__get('regime')."<br>";
+//echo $mat ->__get('coefficient')."<br>";
+//echo $mat ->__get('credits')."<br>";
+
+$db=new PDO('mysql:host=127.0.0.1;dbname=DBMatieres','eya','eya272002');
+$manager=new MatiereManager($db);
+echo "<br>*** insertin matiere***<br>";$
+$manager->add($matiere);
+
 
 ?>

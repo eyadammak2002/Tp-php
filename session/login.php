@@ -13,11 +13,12 @@ if (isset($_POST['login']) && isset($_POST['pwd']))
     {
         if ($value["login"] == $_POST['login'] && $value["pwd"]==$_POST['pwd'])
         {
-            $_SESSION['login'] = $_POST['login']; 
-            $_SESSION['pwd'] = $_POST['pwd'];
+            $_SESSION['login'] = $_POST['login'];
+             $_SESSION['pwd'] = $_POST['pwd'];
             $_SESSION['indice']=$index;
             $_SESSION['nom']=$value['nom'];
             $_SESSION['prenom']=$value['prenom'];
+           
             $valide=true;
             break; 
         }
