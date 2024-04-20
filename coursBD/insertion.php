@@ -1,0 +1,33 @@
+<?php
+include 'Matiere.php';
+include 'MatiereManager.php';
+
+if(empty($_POST['code'])||empty($_POST['intitule'])||empty($_POST['regime'])||empty($_POST['coef'])||empty($_POST['credits'])):
+echo"il faut remplir tous les champs est obligatoire";
+else:
+    if(!is_numeric($_POST['coef'])):
+    echo"le champs coefficient doit étre numérique";
+    else:
+    #yejem hna il utilisateur ida5al des valeur 8altin wala haja howa ba3ad bech yesna3 bih objet lezem valeur il regime ikoun kima deklarineh fih constructeur heka aleh aista3melna Matiere::REG_MIXTE;
+    $reg=Matiere::REG_MIXTE;
+    if($_POST['regime']=='cc')
+        $reg=Matiere::REG_CC;
+        $mat=new Matiere(($_GET['code']),($_GET['intitule']),$reg,(float)$_GET['coefficient']);
+
+//echo $mat ->__get('code')."<br>";
+//echo $mat ->__get('intitule')."<br>";
+//echo $mat ->__get('regime')."<br>";
+//echo $mat ->__get('coefficient')."<br>";
+//echo $mat ->__get('credits')."<br>";
+
+$db=new PDO('mysql:host=127.0.0.1;dbname=DBMatieres','eya','eya272002');
+$manager=new MatiereManager($db);
+echo "<br>*** insertin matiere***<br>";$
+$manager->add($matiere);
+    endif;
+endif;
+
+
+
+
+?>

@@ -6,7 +6,7 @@
         require_once ('Matiere.php');
         include ('MatiereManager.php');
 
-        $db=new PDO('mysql:host=127.0.0.1;dbname=BDMatieres','eya','eya272002');
+        $db=new PDO('mysql:host=127.0.0.1;dbname=BD','eya','eya272002');
         $manager=new MatiereManager($db);
 
         echo "<ul>";

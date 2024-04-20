@@ -13,7 +13,7 @@ class Matiere{
     //matejmch ta3melo initialisation lil static fil constructeur ba3ad mat3ayet lil constructeur ta3mel set filiére 5asa ib kol objets
     public static string $filiere;
 
-     /*public function getCode():String
+     public function getCode():String
     {
         return $this->Code ;
     }
@@ -28,11 +28,11 @@ class Matiere{
         return $this->Regime ;
     }
 
-    public function getCoefficient():String
+    public function getCoefficient():float
     {
         return $this->Coefficient ;
     }
-    public function getCredits():String
+    public function getCredits():int
     {
         return $this->credits ;
     }
@@ -53,27 +53,27 @@ class Matiere{
     $this->regime=$regime;
    }
 
-   public function setCoefficient(String $coefficient)
+   public function setCoefficient(float $coefficient)
    {
     $this->coefficient=$coefficient;
    }
 
-   public function setCredits(String $credits)
+   public function setCredits(int $credits)
    {
     $this->credits=$credits;
-   }*/
+   }
    
-   public function __get($att)
+   /*public function __get($att)
     {
         if(isset($this->$att))
             return $this->$att ;
         else
             echo"error:attribut inexistant";
-    }
+    }*/
 
 
 
-    public function __set($att,$value)
+    /*public function __set($att,$value)
     {
         //get_class($this) ta3tikil class mte3 objet ili howa $this
         $tabatt=get_class_vars(get_class($this));
@@ -84,7 +84,7 @@ class Matiere{
             $this->credits=$coefficient*self::POIDS;}
         else
             echo"error:attribut inexistant";
-    }
+    }*/
    
      public static function getFiliere():String
         {    //nafs il get lil get
@@ -105,21 +105,21 @@ class Matiere{
 
   
 
-  public  function __construct(String $code,String $intitule,String $regime,float $coefficient)
+  public  function __construct(String $code,String $intitule,String $regime,float $coefficient,int $credits)
    {
     $this->code=$code;
     $this->intitule=$intitule;
     $this->regime=$regime;
     $this->coefficient=$coefficient;
-    $this->credits=$coefficient*self::POIDS;
+    $this->credits=$credits;
    }
 
-  /* public  function __construct($donnees)
+  /*public  function __construct($donnees)
    {
     foreach($donnees as $key =>$value)
         this->__set($key,$value);
-   }*/
-
+   }
+*/
 
 
       

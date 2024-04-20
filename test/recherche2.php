@@ -3,7 +3,7 @@
     require_once ('Matiere.php');
     include ('MatiereManager.php');
         $i=$_POST['code'];
-        $db=new PDO('mysql:host=127.0.0.1;dbname=BDMatieres','eya','eya272002');
+        $db=new PDO('mysql:host=127.0.0.1;dbname=BD','eya','eya272002');
         $manager=new MatiereManager($db);
 
         echo"<br>**recherche d'une matiére**<br>";

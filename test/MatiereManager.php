@@ -9,27 +9,25 @@ class MatiereManager{
 
     public function setDb(PDO $db) 
     {
-        $this->Db=$db;
+        $this->db=$db;
     }
 
+  
     public function add(Matiere $mat)
     {   
-        //$q=$this->db->prepare('INSERT into matieres(code,intitule,regime,coefficient,credits)');
-        $q=$this->db->prepare('INSERT into matieres()');
+     
+        $q=$this->db->prepare('INSERT into matieres(code,intitule,credits)VALUES(:cod , :inti , :cred)');
         $q->bindvalue(':cod',$mat->getCode());
-        $q->bindvalue(':intitule',$mat->getIntitule());
-        $q->bindvalue(':reg',$mat->getRegime());
-        $q->bindvalue(':coeff',$mat->getCoefficient());
+        $q->bindvalue(':inti',$mat->getIntitule());
         $q->bindvalue(':cred',$mat->getCredits());
 
         $R=$q->execute();
-        echo $this->db->lastInsertId();
+        echo $this->db->lastInsertId() ;
         if(!$R)
         {echo "echec insertion!";}
         else
         {echo "echec Réussie";}
     }
-
 
     public function get($code)
     {
@@ -37,7 +35,7 @@ class MatiereManager{
         if($q->rowcount())
         {
             $donnees=$q->fetch(PDO::FETCH_ASSOC);
-            $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["regime"],$donnees["coefficient"]);
+            $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["credits"]);
             return $mat;
         }
         return null;
@@ -49,7 +47,7 @@ class MatiereManager{
         $q=$this->db->query('SELECT * from matieres');
         while($donnes=$q->fetch(PDO::FETCH_ASSOC))
         {
-            $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["regime"],$donnees["coefficient"]);
+            $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["credits"]);
             $matieres[]=$mat;
         }
     return $matieres;
