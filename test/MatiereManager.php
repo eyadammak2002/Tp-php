@@ -67,13 +67,26 @@ class MatiereManager{
     return $matieres;
     }
 
-    public function delete(Matiere $mat)
+   /* public function delete(Matiere $mat)
     {
         $this->db->exec('DELETE FROM matieres WHERE code=.'.$mat->getCode());
        
 
     }
-    
+    */
+    public function delete(Matiere $mat)
+{
+    $stmt = $this->db->prepare('DELETE FROM matieres WHERE code = :code');
+    $stmt->bindValue(':code', $mat->getCode());
+    $stmt->execute();
+
+    // Vérifier si la suppression a réussi
+    if ($stmt->rowCount() > 0) {
+        return $mat; // Retourner l'objet Matiere supprimé
+    } else {
+        return null; // Aucune matière supprimée
+    }
+}
 
 
 

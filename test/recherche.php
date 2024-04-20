@@ -1,25 +1,22 @@
-<html>
-    <body>
-    <h1>voici la liste des matières</h1>
 
-    <?php
-        require_once ('Matiere.php');
-        include ('MatiereManager.php');
-
+<?php
+    require_once ('Matiere.php');
+    include ('MatiereManager.php');
+        $i=$_GET['code'];
         $db=new PDO('mysql:host=127.0.0.1;dbname=BD','eya','eya272002');
         $manager=new MatiereManager($db);
-        $T=$manager->getMatieres();
-        echo "<ul>";
-        foreach($T as $mat)
-        {   
-            echo"<li>".
-            "code: ".$mat->getCode()."**".
-            "intitule: ".$mat->getIntitule()."**".
-            "crédits: ".$mat->getCredits()."</li>";
 
-        }
-        echo"</ul>";
+        echo"<br>**recherche d'une matiére**<br>";
+        $mat=$manager->get($i);
+        if($mat)
+        echo "la matiére recherchée : ".
+            "<ul>".
+            "<li> code: ".$mat->getCode()."</li> ".
+            "<li> intitule: ".$mat->getIntitule()."</li> ".
+            "<li> crédits: ".$mat->getCredits()."</li> ".
+            "</ul>";
+        else
+        echo "aucune matiére trouvée";
 
-    ?>
-    </body>
-</html>
+?>
+   
