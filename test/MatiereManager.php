@@ -59,7 +59,7 @@ class MatiereManager{
     {
         $matieres=array();
         $q=$this->db->query('SELECT * from matieres');
-        while($donnes=$q->fetch(PDO::FETCH_ASSOC))
+        while($donnees=$q->fetch(PDO::FETCH_ASSOC))
         {
             $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["credits"]);
             $matieres[]=$mat;
