@@ -29,13 +29,27 @@ class MatiereManager{
         {echo "echec Réussie";}
     }
 
-    public function get($code)
+    /*public function get($code)
     {
-        $q=$this->db->prepare('SELECT * FROM matieres WHERE code like '.$code );
+        $q=$this->db->prepare('SELECT * FROM matieres WHERE code like '.$code);
+      
+        
         if($q->rowcount())
         {
             $donnees=$q->fetch(PDO::FETCH_ASSOC);
             $mat=new matiere ($donnees["code"],$donnees["intitule"],$donnees["credits"]);
+            return $mat;
+        }
+        return null;
+    }*/
+    
+    public function get($code)
+    {
+        $q = $this->db->prepare('SELECT * FROM matieres WHERE code = :code');
+        $q->bindValue(':code', $code);
+        $q->execute();
+        if ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            $mat = new Matiere($donnees["code"], $donnees["intitule"], $donnees["credits"]);
             return $mat;
         }
         return null;
@@ -51,6 +65,13 @@ class MatiereManager{
             $matieres[]=$mat;
         }
     return $matieres;
+    }
+
+    public function delete(Matiere $mat)
+    {
+        $this->db->exec('DELETE FROM matieres WHERE code=.'.$mat->getCode());
+       
+
     }
     
 

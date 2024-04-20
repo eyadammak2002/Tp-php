@@ -8,15 +8,13 @@
 
         $db=new PDO('mysql:host=127.0.0.1;dbname=BD','eya','eya272002');
         $manager=new MatiereManager($db);
-
+        echo"avant bouble foreach";
         echo "<ul>";
         foreach($db as $mat)
-        {
+        {   echo"bouble foreach";
             echo"<li>".
             "code: ".$mat->getCode()."**".
             "intitule: ".$mat->getIntitule()."**".
-            "regime: ".$mat->getRegime()."**".
-            "coefficient: ".$mat->getCoefficient()."**".
             "crédits: ".$mat->getCredits()."</li>";
 
         }
